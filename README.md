@@ -1,2 +1,1 @@
-this is my code
-asdadadada
+I'm ready for the exam
