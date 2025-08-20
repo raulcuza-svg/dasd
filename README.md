@@ -4,7 +4,7 @@ Today I tried to build the game HANGMAN!
 
 The way I approached it is create a list of 10 words. The code would then pick one at random.
 
-I then created a list named 'display' that contains '_'. Using a for command, every time the code detacts a letter in the 'random_word', a ("_") is added using append('_')
+I then created a list named 'display' that contains '_'. Using a for command, every time the code detacts a letter in the 'random_word', a ('_') is added using append('_')
 
 As it is a list and we don't want the players to be shown display as ["_',"_',"_',"_',"_'], I used the command : " ".join(display) to combine all the elements of the list into a single string. In order for the player to see each dash clearer I added a space between them " ".
 
