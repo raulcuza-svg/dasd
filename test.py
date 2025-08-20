@@ -1,29 +1,45 @@
-secret = "apple"
-tries = 6
+import random
 
-print("Guess the 5-letter word. You have 6 tries.")
-print("Uppercase = correct letter & position, lowercase = correct letter wrong position, _ = not in word")
+words = ["apple", "shame", "german", "ghost", "tractor", "hangman", "shark", "slot", "flame", "brick"]
+tries = 5
 
-while tries > 0:
-    guess = input("Your guess: ").lower()
-    if len(guess) != 5:
-        print("Enter exactly 5 letters.")
+print("Welcome to HANGMAN! Find out the word or phrase by guessing one letter at a time. But be careful. You can only guess 5 letters incorrectly")
+
+
+random_word = random.choice(words)
+display = []
+for _ in random_word:
+    display.append("_")
+
+print(" ".join(display))
+
+while tries > 0 and "_" in display:
+    guess = input("Enter a letter: ").lower()
+
+    if len(guess)!= 1 or guess.isdigit():
+        print("Please enter a single letter. Not multiple or a number")
         continue
-    if guess == secret:
-        print("You win!")
-        break
 
-    feedback = ""
-    for i in range(5):
-        if guess[i] == secret[i]:
-            feedback += guess[i].upper()
-        elif guess[i] in secret:
-            feedback += guess[i].lower()
-        else:
-            feedback += "_"
-    print("Feedback:", feedback)
+    if guess in random_word:
+        for i in range(len(random_word)):
+            if random_word[i] == guess:
+                display[i] = guess
+        print("Good job! The letter is in the word.")
+    else:
+        tries = tries - 1
+        print(f"Wrong guess. You have {tries} tries left.")
 
-    tries -= 1
+    print(" ".join(display))
 
-if tries == 0:
-    print("Game over! The word was:", secret)
+if "_" not in display:
+    print("Congratulations! You won!")
+else:
+    print(f"Game over! The word was: {random_word}")
+
+
+
+
+    
+
+
+
